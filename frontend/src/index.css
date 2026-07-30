@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');    
+@import "tailwindcss";
+
+@theme {
+    --font-family: 'Inter', sans-serif;
+    --breakpoint-3xl: 19200px;
+    --color-primary: #4F46E5;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-family);
+    }
+
+    body {
+        background-color: #F9FAFB;
+        overflow-x: hidden;
+    }
+}
