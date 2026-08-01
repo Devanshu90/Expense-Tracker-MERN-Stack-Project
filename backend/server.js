@@ -14,10 +14,12 @@ const app = express();
 // middleware to handle CORS
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
+    origin: [
+      "http://localhost:5173",
+      "https://expense-tracker-frontend-n8k8.onrender.com",
+    ],
+    credentials: true,
+  })
 );
 
 app.use(express.json());
