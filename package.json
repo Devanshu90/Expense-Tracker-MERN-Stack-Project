@@ -1,6 +1,25 @@
 {
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "A full-stack Expense Tracker web application built using the MERN stack to help users efficiently manage their personal finances. The application allows users to securely track income and expenses, monitor account balances, and view transaction history through an intuitive and responsive interface.",
+  "homepage": "https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project#readme",
+  "bugs": {
+    "url": "https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "mongodb": "^7.5.0",
     "tailwindcss": "^4.3.3"
   }
 }
