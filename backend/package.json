@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend",
+  "homepage": "https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project/tree/main#readme",
+  "bugs": {
+    "url": "https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devanshu90/Expense-Tracker-MERN-Stack-Project.git#main"
+  },
+  "license": "ISC",
+  "author": "Devanshu Aslaliya",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.0",
+    "multer": "^2.2.0",
+    "xlsx": "^0.18.5"
+  }
+}
