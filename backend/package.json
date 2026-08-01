@@ -13,10 +13,12 @@
   "license": "ISC",
   "author": "Devanshu Aslaliya",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node server.js",
+  "dev": "node server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cloudinary": "^2.10.0",
