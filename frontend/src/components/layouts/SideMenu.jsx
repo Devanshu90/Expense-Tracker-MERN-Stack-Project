@@ -46,8 +46,7 @@ const SideMenu = ({ activeMenu }) => {
     return (
         <div
             className="w-64 h-[calc(100vh-61px)] bg-white dark:bg-[#1e293b] border-r border-gray-200 dark:border-gray-700 p-5 sticky z-20 transition-colors duration-300"
-            style={{ top: '61px' }}
-        >
+            style={{ top: '61px' }} >
 
             {/* Profile */}
             <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">
