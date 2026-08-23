@@ -1,32 +1,14 @@
 const multer = require("multer");
 const path = require("path");
-const fs = require("fs");
 
-// Profile image upload directory
-const uploadDir = path.join(__dirname, "..", "uploads", "profile");
-
-// Create the directory if it doesn't exist
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Configure where files are stored
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDir);
-    },
-
-    filename: (req, file, cb) => {
-        const extension = path.extname(file.originalname).toLowerCase();
-        const filename = `profile-${Date.now()}${extension}`;
-
-        cb(null, filename);
-    },
-});
+// Store uploaded files temporarily in memory.
+// The image will be sent directly to Cloudinary.
+const storage = multer.memoryStorage();
 
 // Allow only image files
 const fileFilter = (req, file, cb) => {
     const allowedTypes = /jpeg|jpg|png|webp/;
+
     const extension = path.extname(file.originalname).toLowerCase();
     const mimeType = allowedTypes.test(file.mimetype);
 
