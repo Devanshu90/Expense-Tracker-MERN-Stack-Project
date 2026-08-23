@@ -117,7 +117,10 @@ const Navbar = ({ activeMenu }) => {
                 </h2>
 
                 {openSideMenu && (
-                    <div className="fixed top-15.25 -ml-4 bg-white dark:bg-gray-800">
+                    <div
+                        className="fixed -ml-4 bg-white dark:bg-gray-800"
+                        style={{ top: '61px' }}
+                    >
                         <SideMenu activeMenu={activeMenu} />
                     </div>
                 )}
