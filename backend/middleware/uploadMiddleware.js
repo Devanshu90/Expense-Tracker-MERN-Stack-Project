@@ -1,25 +1,49 @@
-const multer = require('multer');
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 
-// Configure storage
+// Profile image upload directory
+const uploadDir = path.join(__dirname, "..", "uploads", "profile");
+
+// Create the directory if it doesn't exist
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+// Configure where files are stored
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, uploadDir);
     },
-    filename: (req, file, cb) =>{
-        cb(null, `${Date.now()}-${file.originalname}`);
-    },
-})
 
-// File filter
+    filename: (req, file, cb) => {
+        const extension = path.extname(file.originalname).toLowerCase();
+        const filename = `profile-${Date.now()}${extension}`;
+
+        cb(null, filename);
+    },
+});
+
+// Allow only image files
 const fileFilter = (req, file, cb) => {
-    const allowedTypes = ['image/jpeg','image/png','image/jpg'];
-    if (allowedTypes.includes(file.mimetype)) {
+    const allowedTypes = /jpeg|jpg|png|webp/;
+    const extension = path.extname(file.originalname).toLowerCase();
+    const mimeType = allowedTypes.test(file.mimetype);
+
+    if (mimeType && allowedTypes.test(extension)) {
         cb(null, true);
-    }else {
-        cb(new Error('Only .jpeg, .jpg and .png formats are allowed'), falsed);
+    } else {
+        cb(new Error("Only JPG, JPEG, PNG, and WEBP images are allowed"));
     }
 };
 
-const upload = multer({storage, fileFilter});
+// Configure Multer
+const uploadProfileImage = multer({
+    storage,
+    fileFilter,
+    limits: {
+        fileSize: 5 * 1024 * 1024, // 5 MB
+    },
+});
 
-module.exports = upload;
+module.exports = uploadProfileImage;
