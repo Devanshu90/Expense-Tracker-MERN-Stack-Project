@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     PieChart,
     Pie,
@@ -6,67 +6,74 @@ import {
     Tooltip,
     ResponsiveContainer,
     Legend,
-}from "recharts";
+} from 'recharts';
+
 import CustomTooltip from './CustomTooltip';
 import CustomLegend from './CustomLegend';
 
-const CustomPieChart = ({ 
+const CustomPieChart = ({
     data,
     label,
     totalAmount,
     colors,
-    showTextAnchor
+    showTextAnchor,
 }) => {
-  return <ResponsiveContainer width="100%" height={380}>
-    <PieChart>
-        <Pie
-            data={data}
-            dataKey="amount"
-            nameKey="name"
-            cx="50%"
-            cy="50%"
-            outerRadius={130}
-            innerRadius={100}
-            labelLine={false}
-            >
-                {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
+    return (
+        <ResponsiveContainer width="100%" height={380}>
+            <PieChart>
+                <Pie
+                    data={data}
+                    dataKey="amount"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={130}
+                    innerRadius={100}
+                    labelLine={false}
+                >
+                    {data.map((entry, index) => (
+                        <Cell
+                            key={`cell-${index}`}
+                            fill={colors[index % colors.length]}
+                        />
+                    ))}
+                </Pie>
 
-                ))}
-            </Pie>
-            <Tooltip content={CustomTooltip}/>
-            <Legend content={CustomLegend}/>
+                <Tooltip content={<CustomTooltip />} />
 
-            {showTextAnchor && (
-                <>
-                <text
-                    x="50%"
-                    y="50%"
-                    dy={-25}
-                    textAnchor='middle'
-                    fill='#666'
-                    fontSize="14px"
-                    >
-                        {label}
+                <Legend content={<CustomLegend />} />
+
+                {showTextAnchor && (
+                    <>
+                        {/* Center Label */}
+                        <text
+                            x="50%"
+                            y="50%"
+                            dy={-25}
+                            textAnchor="middle"
+                            className="fill-gray-500 dark:fill-gray-300"
+                            fontSize="14px"
+                        >
+                            {label}
                         </text>
+
+                        {/* Center Amount */}
                         <text
                             x="50%"
                             y="50%"
                             dy={8}
-                            textAnchor='middle'
-                            fill='#333'
+                            textAnchor="middle"
+                            className="fill-gray-900 dark:fill-white"
                             fontSize="24px"
-                            fontWeight="semi-bold"
-                            >
-                            
+                            fontWeight="600"
+                        >
                             {totalAmount}
                         </text>
-                        
-                        </>
-            )}
+                    </>
+                )}
+            </PieChart>
+        </ResponsiveContainer>
+    );
+};
 
-    </PieChart>
-  </ResponsiveContainer>
-}
-
-export default CustomPieChart
+export default CustomPieChart;

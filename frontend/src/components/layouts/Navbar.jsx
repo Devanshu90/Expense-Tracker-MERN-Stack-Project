@@ -95,10 +95,12 @@ const Navbar = ({ activeMenu }) => {
     };
 
     return (
-        <div className="flex items-center justify-between gap-5 bg-white border border-b border-gray-200/50 backdrop-blur-[2px] py-4 px-7 sticky top-0 z-30">
+        <div className="flex items-center justify-between gap-5 bg-white dark:bg-gray-800 border border-b border-gray-200/50 dark:border-gray-700 backdrop-blur-[2px] py-4 px-7 sticky top-0 z-30 transition-colors duration-300">
+
             <div className="flex items-center gap-5">
+
                 <button
-                    className="block text-black"
+                    className="block text-black dark:text-white"
                     onClick={() => {
                         setOpenSideMenu(!openSideMenu);
                     }}
@@ -110,12 +112,12 @@ const Navbar = ({ activeMenu }) => {
                     )}
                 </button>
 
-                <h2 className="text-lg font-medium text-black">
+                <h2 className="text-lg font-medium text-black dark:text-white">
                     Finance Flow
                 </h2>
 
                 {openSideMenu && (
-                    <div className="fixed top-15.25 -ml-4 bg-white">
+                    <div className="fixed top-15.25 -ml-4 bg-white dark:bg-gray-800">
                         <SideMenu activeMenu={activeMenu} />
                     </div>
                 )}
@@ -123,6 +125,7 @@ const Navbar = ({ activeMenu }) => {
 
             {/* Profile Section */}
             <div className="flex items-center gap-3">
+
                 <input
                     ref={fileInputRef}
                     type="file"
@@ -163,10 +166,11 @@ const Navbar = ({ activeMenu }) => {
 
                 {user?.fullName && (
                     <div className="hidden sm:block">
-                        <p className="text-sm font-medium text-gray-800">
+                        <p className="text-sm font-medium text-gray-800 dark:text-gray-100">
                             {user.fullName}
                         </p>
-                        <p className="text-xs text-gray-500">
+
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
                             {user.email}
                         </p>
                     </div>
