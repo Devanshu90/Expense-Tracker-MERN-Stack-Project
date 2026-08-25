@@ -20,16 +20,27 @@ const Input = forwardRef(
         };
 
         return (
-            <div className={`${className === "hidden" ? "hidden" : ""}`}>
-
+            <div className={className === "hidden" ? "hidden" : ""}>
                 {label && (
-                    <label className="text-[15px] font-bold text-slate-800 dark:text-gray-100">
+                    <label className="block mb-2 text-[15px] font-bold text-slate-800 dark:text-slate-200">
                         {label}
                     </label>
                 )}
 
-                <div className="input-box flex items-center dark:bg-slate-800 dark:border-slate-700">
-
+                <div
+                    className="
+                        input-box
+                        flex
+                        items-center
+                        bg-white
+                        border
+                        border-slate-200
+                        dark:bg-slate-800
+                        dark:border-slate-700
+                        dark:text-white
+                        transition-colors
+                    "
+                >
                     <input
                         ref={ref}
                         type={
@@ -40,9 +51,15 @@ const Input = forwardRef(
                                 : type
                         }
                         placeholder={placeholder}
-                        className={`w-full bg-transparent outline-none text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 ${
-                            className !== "hidden" ? "" : ""
-                        }`}
+                        className="
+                            w-full
+                            bg-transparent
+                            outline-none
+                            text-gray-900
+                            dark:text-white
+                            placeholder:text-gray-500
+                            dark:placeholder:text-gray-400
+                        "
                         value={value}
                         onChange={(e) => onChange?.(e)}
                     />
@@ -64,7 +81,6 @@ const Input = forwardRef(
                             )}
                         </>
                     )}
-
                 </div>
             </div>
         );
