@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
     LuUtensils,
     LuTrendingUp,
     LuTrendingDown,
     LuTrash2,
-} from 'react-icons/lu';
+    LuPencil,
+} from "react-icons/lu";
 
 const TransactionInfocard = ({
     title,
@@ -13,16 +14,17 @@ const TransactionInfocard = ({
     amount,
     type,
     hideDeleteBtn,
+    hideEditBtn,
     onDelete,
+    onEdit,
 }) => {
     const getAmountStyles = () =>
-        type === 'income'
-            ? 'bg-green-50 text-green-500 dark:bg-green-950 dark:text-green-400'
-            : 'bg-red-50 text-red-500 dark:bg-red-950 dark:text-red-400';
+        type === "income"
+            ? "bg-green-50 text-green-500 dark:bg-green-950 dark:text-green-400"
+            : "bg-red-50 text-red-500 dark:bg-red-950 dark:text-red-400";
 
     return (
         <div className="group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-gray-100/60 dark:hover:bg-gray-700/60 transition-colors duration-200">
-
             {/* Transaction Icon */}
             <div className="w-12 h-12 flex items-center justify-center text-xl text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded-full">
                 {icon ? (
@@ -38,7 +40,6 @@ const TransactionInfocard = ({
 
             {/* Transaction Details */}
             <div className="flex-1 flex items-center justify-between">
-
                 <div>
                     <p className="text-sm text-gray-700 dark:text-gray-100 font-medium">
                         {title}
@@ -50,11 +51,42 @@ const TransactionInfocard = ({
                 </div>
 
                 <div className="flex items-center gap-2">
+                    {/* Edit Button */}
+                    {!hideEditBtn && onEdit && (
+                        <button
+                            type="button"
+                            aria-label="Edit transaction"
+                            className="
+                                text-gray-400
+                                dark:text-gray-500
+                                hover:text-primary
+                                dark:hover:text-purple-400
+                                opacity-0
+                                group-hover:opacity-100
+                                transition-opacity
+                                cursor-pointer
+                            "
+                            onClick={onEdit}
+                        >
+                            <LuPencil size={18} />
+                        </button>
+                    )}
 
                     {/* Delete Button */}
-                    {!hideDeleteBtn && (
+                    {!hideDeleteBtn && onDelete && (
                         <button
-                            className="text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                            type="button"
+                            aria-label="Delete transaction"
+                            className="
+                                text-gray-400
+                                dark:text-gray-500
+                                hover:text-red-500
+                                dark:hover:text-red-400
+                                opacity-0
+                                group-hover:opacity-100
+                                transition-opacity
+                                cursor-pointer
+                            "
                             onClick={onDelete}
                         >
                             <LuTrash2 size={18} />
@@ -66,10 +98,10 @@ const TransactionInfocard = ({
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}
                     >
                         <h6 className="text-xs font-medium">
-                            {type === 'income' ? '+' : '-'} ₹{amount}
+                            {type === "income" ? "+" : "-"} ₹{amount}
                         </h6>
 
-                        {type === 'income' ? (
+                        {type === "income" ? (
                             <LuTrendingUp />
                         ) : (
                             <LuTrendingDown />
